@@ -11,7 +11,7 @@ public class DynamicProxy implements InvocationHandler {
 
     private Object subject;
 
-    public DynamicProxy(Object subject) {
+    DynamicProxy(Object subject) {
         this.subject = subject;
     }
 

@@ -10,6 +10,11 @@ import java.util.Map;
  */
 public class Test {
     public static void main(String[] args) {
+        int ten = 10;
+        int three = 3;
+        float result = (float) ten / three;
+        System.out.println(result);
+
         List<String> list = new ArrayList<>();
         list.add("zhangsan");
         List<String> list1 = Test.get(list);

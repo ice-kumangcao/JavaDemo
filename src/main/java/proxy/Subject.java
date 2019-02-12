@@ -6,7 +6,14 @@ package proxy;
  */
 public interface Subject {
 
-    public void name();
+    /**
+     * 输出name
+     */
+    void name();
 
-    public void hello(String str);
+    /**
+     * 输出hello + str
+     * @param str 字符串
+     */
+    void hello(String str);
 }
