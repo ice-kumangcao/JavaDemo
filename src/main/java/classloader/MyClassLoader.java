@@ -3,6 +3,7 @@ package classloader;
 import java.io.*;
 
 /**
+ * 实现自己的ClassLoader加载.class文件
  * @author ice
  * @date 18-12-25 上午9:53
  */
@@ -38,6 +39,7 @@ public class MyClassLoader extends ClassLoader {
         ByteArrayOutputStream out = null;
         File file = new File(name);
         System.out.println("read " + file.getAbsolutePath());
+        // 读.class文件输出字节数据
         try {
             in = new FileInputStream(file);
             out = new ByteArrayOutputStream();

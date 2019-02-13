@@ -4,6 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * 线程池的Demo
  * @author ice
  * @date 18-11-14 上午9:02
  */
@@ -14,6 +15,7 @@ public class SingleThreadExecutorTest {
         for (int i = 0; i < 10; i++) {
             final int index = i;
             singleThreadExecutor.execute(new Runnable() {
+                @Override
                 public void run() {
                     System.out.println(index);
                 }

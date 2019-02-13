@@ -1,4 +1,5 @@
 /**
+ * 此类生成了.class文件，不要加package包路径
  * @author ice
  * @date 18-12-25 上午10:04
  */

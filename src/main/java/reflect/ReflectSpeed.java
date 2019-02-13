@@ -3,6 +3,7 @@ package reflect;
 import java.lang.reflect.Method;
 
 /**
+ * 计算反射创建对象和直接创建所耗时差别
  * @author ice
  * @date 19-1-16 下午2:15
  */

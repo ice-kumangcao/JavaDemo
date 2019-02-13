@@ -6,6 +6,8 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
+ * java8的新特性
+ * 对集合进行排序
  * @author ice
  * @date 19-1-9 上午9:22
  */

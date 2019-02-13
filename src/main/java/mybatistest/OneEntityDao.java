@@ -1,6 +1,7 @@
 package mybatistest;
 
 /**
+ * Dao类
  * @author ice
  * @date 19-1-17 下午2:34
  */

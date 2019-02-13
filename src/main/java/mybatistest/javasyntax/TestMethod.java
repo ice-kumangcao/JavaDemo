@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * java 泛型的一个测试
  * @author ice
  * @date 19-1-21 下午1:42
  */
@@ -16,6 +17,7 @@ public class TestMethod {
         OneEntity oneEntity = new OneEntity();
         Class<?> clazz = oneEntity.getClass();
         try {
+            // 查看方法的实现类
             Method onEntityMethod = clazz.getDeclaredMethod("getName");
             Method objectMetod = Object.class.getDeclaredMethod("toString");
             if (Object.class.equals(onEntityMethod.getDeclaringClass())) {
@@ -28,7 +30,7 @@ public class TestMethod {
             e.printStackTrace();
         }
 
-
+        // 生成特定的List
         List<String> strings = TestMethod.getList();
         for (String string : strings) {
             System.out.println(string);

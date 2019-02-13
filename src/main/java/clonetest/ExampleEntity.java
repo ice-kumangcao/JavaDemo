@@ -38,6 +38,7 @@ public class ExampleEntity implements Cloneable {
 
     @Override
     public Object clone() throws CloneNotSupportedException{
+        // 浅克隆
         return super.clone();
     }
 }

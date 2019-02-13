@@ -3,6 +3,7 @@ package mybatistest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ * BaseService imple
  * @author ice
  * @date 19-1-17 下午2:38
  */
