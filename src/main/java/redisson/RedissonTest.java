@@ -71,6 +71,8 @@ public class RedissonTest {
             this.map = map;
             this.id = id;
         }
+
+        @Override
         public void run() {
             try {
                 startSignal.await();
