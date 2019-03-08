@@ -25,7 +25,7 @@ public class RedissonTest {
 
         // redisson 连接 redis服务器
         Config config = new Config();
-        config.useSingleServer().setAddress("172.17.0.2:6379");
+        config.useSingleServer().setAddress("172.17.0.4:6379");
         RedissonClient redissonClient = Redisson.create(config);
 
         // 初始化HashMap
@@ -39,7 +39,7 @@ public class RedissonTest {
             int count = i % 100;
             // get Lock
             final RLock rLock = redissonClient.getLock(remainder + "");
-            Thread thread = new Thread(new Worker(rLock, startSign, endSign, map, remainder + ""));
+            Thread thread = new Thread(new Worker(redissonClient, startSign, endSign, map, remainder + ""));
             thread.start();
         }
         // begin
@@ -64,8 +64,8 @@ public class RedissonTest {
         private final CountDownLatch endSignal;
         private final Map<String, Integer> map;
         private final String id;
-        Worker(RLock lock, CountDownLatch startSignal, CountDownLatch endSignal, Map map, String id) {
-            rLock = lock;
+        Worker(RedissonClient redissonClient, CountDownLatch startSignal, CountDownLatch endSignal, Map map, String id) {
+            rLock = redissonClient.getLock(id);
             this.startSignal = startSignal;
             this.endSignal = endSignal;
             this.map = map;
@@ -78,17 +78,23 @@ public class RedissonTest {
                 startSignal.await();
                 // do work
                 // 设置锁的有效时间，加锁
-                rLock.lock(10, TimeUnit.SECONDS);
+                rLock.tryLock(1, 10, TimeUnit.SECONDS);
                 int result;
                 int value = map.get(id);
                 result = value + 1;
                 map.put(id, result);
                 // 解锁
-                rLock.unlock();
-            } catch (InterruptedException e) {
+                unlock(rLock);
+            } catch (Exception e) {
                 e.printStackTrace();
             } finally {
                 endSignal.countDown();
+            }
+        }
+
+        private void unlock(RLock rLock) {
+            if (rLock.isHeldByCurrentThread()) {
+                rLock.unlock();
             }
         }
     }
